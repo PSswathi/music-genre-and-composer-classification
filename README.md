@@ -2,7 +2,7 @@
 
 ### Music Genre and Composer Classification Using Deep Learning 
 
-Team Members:
+### Team Members:
 
 Carlos Alberto Ortiz Montes De Oca
 
