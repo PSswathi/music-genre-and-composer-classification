@@ -10,15 +10,15 @@ Omar Sagoo
 
 Swathi Subramanyam Pabbathi
 
-### Setup & Installation
+## Setup & Installation
 
-# Clone the repository
+### Clone the repository
 
 git clone https://github.com/yourusername/project-name.git
 
 cd project-name
 
-# Create virtual environment and install dependencies
+### Create virtual environment and install dependencies
 
 python -m venv venv
 
