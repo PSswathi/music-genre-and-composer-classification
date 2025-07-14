@@ -12,7 +12,7 @@ Swathi Subramanyam Pabbathi
 
 ## 🔧 Setup & Installation
 
-```bash
+
 # Clone the repository
 git clone https://github.com/yourusername/project-name.git
 cd project-name
