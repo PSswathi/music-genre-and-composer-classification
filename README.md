@@ -20,6 +20,24 @@ cd project-name
 
 ### Create virtual environment and install dependencies
 
+## For Conda environment
+
+### Setup
+1. Create the environmnet, install packages
+```
+conda env create -f environment.yml
+```
+2. Activate the environment
+```
+conda activate composer-env
+or
+source activate composer-env
+```
+
+## For python environment
+
+### Setup
+
 python -m venv venv
 
 source venv/bin/activate  # or venv\Scripts\activate on Windows
@@ -65,5 +83,3 @@ By the end of this project, the developed model can serve as a tool for music st
 The dataset used in this project consists of MIDI files representing classical music compositions by four renowned composers: Johann Sebastian Bach, Ludwig van Beethoven, Frédéric Chopin, and Wolfgang Amadeus Mozart. The dataset was sourced from a publicly available collection on Kaggle, containing hundreds of MIDI files organized by composer.
 
 After filtering for the selected composers and segmenting each piece into chunks of 200 notes, the final dataset contains approximately 23,674 rows (or segments), with each row representing a distinct 200-note chunk. Each row includes 15 variables, such as composer label, filename, and 12 numerical musical features like tempo, average pitch, pitch range, note duration statistics, velocity, and chord density. The dataset is approximately 40–50 MB in memory size after processing and provides a rich foundation for learning stylistic differences between composers through statistical and temporal patterns in music.
-
-
