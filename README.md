@@ -4,7 +4,7 @@
 
 ### Team Members:
 
-Carlos Alberto Ortiz Montes De Oca
+Carlos A. Ortiz Montes De Oca
 
 Omar Sagoo
 
