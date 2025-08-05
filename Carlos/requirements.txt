@@ -12,4 +12,4 @@ ipykernel
 midipy
 seaborn
 split-folders
-pandas_profiling
+sweetviz
