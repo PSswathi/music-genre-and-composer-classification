@@ -12,3 +12,4 @@ dependencies:
   - pretty_midi
   - pygame
   - tensorflow
+  - pypianoroll
