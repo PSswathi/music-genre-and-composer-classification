@@ -5,3 +5,5 @@ midiclassics.zip
 DS_Store
 composer-env
 .DS_Store
+cnn_model.keras
+cnn-swathi.ipynb
