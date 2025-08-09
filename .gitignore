@@ -5,5 +5,19 @@ midiclassics.zip
 DS_Store
 composer-env
 .DS_Store
-cnn_model.keras
-cnn-swathi.ipynb
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
+
+# Ignore environment files
+.env
+*.env
+
+# Ignore IDE and editor files
+.vscode/
+.idea/
