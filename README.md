@@ -2,6 +2,44 @@
 
 aai-511-group6-final-project
 
+#### Github Project Structure
+
+```
+MUSIC-GENRE-AND-COMPOSER-CLASSIFICATION/
+│
+├── featured datasets/                  # Datasets used for training & evaluation
+│   ├── data_splits.npz                  # Preprocessed train/val/test splits
+│   └── datasets.zip                     # Raw MIDI dataset archive
+│
+├── models/                              # Saved trained model weights
+│   ├── cnn_piano_roll.keras              # Final CNN model (piano roll input)
+│   ├── final_bi_lstm_attention_model.keras # Final BiLSTM + Attention model
+│   └── final_lstm_model.keras            # Final LSTM model
+│
+├── notebooks/                           # Jupyter notebooks for experiments
+│   ├── helpers/
+│   │   └── processor.py                  # Preprocessing utilities (feature extraction, augmentation)
+│   ├── cnn_piano_roll.ipynb              # CNN training & evaluation pipeline
+│   └── notelevel-lstm-bilstm-attn-swathi.ipynb  # LSTM & BiLSTM + Attention training & evaluation
+|    ├── merged-compared-lstm-bilstm-cnn.ipynb # Combined metrics & comparison notebook
+|
+│
+├── proposal/                            # Project proposal & documentation
+│   └── AAI-511-group6 Final Team Project Status Update For…pdf
+│
+├── selectedcomposers/                   # Selected composer MIDI datasets
+│   ├── Bach/
+│   ├── Beethoven/
+│   ├── Chopin/
+│   └── Mozart/
+│
+│
+├── environment.yml                      # Conda environment file with dependencies
+├── Makefile                              # Automation commands (optional build/run targets)
+├── README.md                             # Project documentation (this file)
+└── .gitignore                            # Ignored files for Git
+```
+
 ## Project Description
 
 Project Description
