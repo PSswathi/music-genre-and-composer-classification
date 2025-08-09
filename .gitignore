@@ -6,3 +6,21 @@ DS_Store
 composer-env
 .DS_Store
 
+<<<<<<< HEAD
+=======
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
+
+# Ignore environment files
+.env
+*.env
+
+# Ignore IDE and editor files
+.vscode/
+.idea/
+>>>>>>> main
