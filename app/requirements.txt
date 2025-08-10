@@ -1,0 +1,10 @@
+Flask
+gunicorn
+tensorflow-cpu
+numpy
+pandas
+scikit-learn
+joblib
+pretty_midi
+mido
+midi2audio

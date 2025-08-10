@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Composer Classifier</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="card">
+            <h1>Composer Classifier</h1>
+            <div class="disclaimer">
+                This model only predicts among four composers: <strong>Bach, Beethoven, Chopin,</strong> and <strong>Mozart</strong>.
+            </div>
+            <p class="help">Upload a .mid/.midi file. The server will preprocess it, run the BiLSTM, and return the top
+                matches.</p>
+
+            <form id="uploadForm" action="/predict" method="post" enctype="multipart/form-data">
+                <div class="row">
+                    <input type="file" name="file" id="file" accept=".mid,.midi" required />
+                    <div class="flex">
+                        <label for="top_k" class="muted">Top K</label>
+                        <input type="number" id="top_k" name="top_k" value="4" min="1" max="20" />
+                        <button id="submitBtn" type="submit">Predict</button>
+                    </div>
+                </div>
+                <span class="muted">Tip: pieces shorter than 200 notes are skipped.</span>
+            </form>
+
+            <!-- sample cards (outside the form) -->
+<div id="samples" class="samples">
+    {% for s in samples %}
+      <div class="sample">
+        <div class="sample-name">{{ s.name }}</div>
+        <div class="sample-actions">
+          <button type="button" class="btn-predict" data-url="{{ s.url }}">Use for prediction</button>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+    
+            <div id="result" class="result" style="display:none;"></div>
+        </div>
+    </div>    
+
+    <script defer src="https://unpkg.com/tone@14.8.49/build/Tone.js"></script>
+    <script defer src="https://unpkg.com/@tonejs/midi@2.0.28/build/Midi.js"></script>
+    <script defer src="{{ url_for('static', filename='app.js') }}"></script>
+
+   
+</body>
+
+</html>
