@@ -4,10 +4,20 @@
 
 # Music Genre and Composer Classification Using Deep Learning
 
-![](https://img.shields.io/badge/license-MIT-green?style=for-the-badge&logo=python)
-![](https://img.shields.io/badge/MSAAI-DL-blue?style=for-the-badge&logo=keras)
+![](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)
+![](https://img.shields.io/badge/MSAAI-DL-blue?style=for-the-badge)
+![](https://img.shields.io/badge/Python-3.11-blue?style=for-the-badge&logo=python)
 
 aai-511-group6-final-project
+
+![Visitors](https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2FPSswathi%2Fmusic-genre-and-composer-classification%2Fvs-badge&countColor=%23263759)
+
+## Table of Contents
+- [Description](#Overview)
+- [Results](#Results)
+- [Usage](#usage)
+- [Contributing](#Contributors)
+- [License](#license)
 
 #### Github Project Structure
 
@@ -47,19 +57,16 @@ MUSIC-GENRE-AND-COMPOSER-CLASSIFICATION/
 └── .gitignore                            # Ignored files for Git
 ```
 
-## Project Description
-
-Project Description
+# Overview
+## About the Project
 
 Music is a universal language that transcends cultures and generations. Classical composers such as Bach, Beethoven, Mozart, and Chopin are known for their distinct styles, yet their compositions often share structural and melodic similarities that make it difficult—even for trained musicians to distinguish between them by ear or by score alone.
 
 This project aims to explore whether computational techniques, specifically deep learning, can learn to distinguish between these composers based on their musical characteristics. By analyzing patterns in musical structure, dynamics, tempo, pitch, and harmony extracted from MIDI files, we seek to develop a system that can predict the composer of a given musical piece.
 
-Using a dataset of MIDI files collected from classical composers, we preprocess the data by extracting chunks of 200 notes and computing a range of statistical and musical features. We then train deep learning models—including Long Short-Term Memory (LSTM) networks and Convolutional Neural Networks (CNNs) to learn and classify the compositional styles of the selected composers.
+Using a dataset of MIDI files collected from classical composers, we preprocess the data by extracting chunks of 200 notes and computing a range of statistical and musical features. We then train deep learning models—including Long Short-Term Memory (LSTM) networks, BiDirectional LSTMS with an Attention layer, and Convolutional Neural Networks (CNNs) to learn and classify the compositional styles of the selected composers.
 
 ## Project Objective
-
-The primary objective of this project is to develop a deep learning model capable of accurately predicting the composer of a given piece of music based on musical features extracted from MIDI files.
 
 Specifically, we aim to:
 
@@ -83,10 +90,24 @@ By the end of this project, the developed model can serve as a tool for music st
 
 ## Dataset Description:
 
-The dataset used in this project consists of MIDI files representing classical music compositions by four renowned composers: Johann Sebastian Bach, Ludwig van Beethoven, Frédéric Chopin, and Wolfgang Amadeus Mozart. The dataset was sourced from a publicly available collection on Kaggle, containing hundreds of MIDI files organized by composer.
+The <a href = "https://www.kaggle.com/datasets/blanderbuss/midi-classic-music/">dataset</a> used in this project consists of MIDI files representing classical music compositions by four renowned composers: Johann Sebastian Bach, Ludwig van Beethoven, Frédéric Chopin, and Wolfgang Amadeus Mozart. The dataset was sourced from a publicly available collection on Kaggle, containing hundreds of MIDI files organized by composer.
 
-After filtering for the selected composers and segmenting each piece into chunks of 200 notes, the final dataset contains approximately 23,674 rows (or segments), with each row representing a distinct 200-note chunk. Each row includes 15 variables, such as composer label, filename, and 12 numerical musical features like tempo, average pitch, pitch range, note duration statistics, velocity, and chord density. The dataset is approximately 40–50 MB in memory size after processing and provides a rich foundation for learning stylistic differences between composers through statistical and temporal patterns in music.
+After filtering for the selected composers and segmenting each piece into chunks of 200 notes, the final dataset contains approximately 23,674 rows (or segments), with each row representing a distinct 200-note chunk. Each row includes 18 variables, such as composer label, filename, and 12 numerical musical features like tempo, average pitch, pitch range, note duration statistics, velocity, and chord density. The dataset is approximately 40–50 MB in memory size after processing and provides a rich foundation for learning stylistic differences between composers through statistical and temporal patterns in music.
 
+# Results
+
+**Overall Performance Comparison Table:**
+
+| **Metric**               | **LSTM Model** | **BiLSTM + Attention Model**  | **CNN**|
+|--------------------------|----------------|-------------------------------|--------|
+| **Accuracy**             | 85.06%         | 90.38%                        | 78.6%  |
+| **Precision**            | 0.85           | 0.90                          | 0.84   |
+| **Recall**               | 0.89           | 0.93                          | 0.68   |
+| **F1-Score**             | 0.86           | 0.91                          | 0.75   |
+
+Training Deep Learning architectures on MIDI files proved to be feasible and effective. Leveraging the ability of DL to process data representations in the form of tensors, we were able to achieve composer prediction accuracies ranging from 0.78 to 0.92. The LSTM, BiLSTM, CNN models demonstrated strong capability in composer classification using MIDI-derived features. The BiLSTM achieved the highest accuracy and stability , followed by the LSTM. Making them more reliable choices for this task than our trained CNN model.
+
+# Usage
 
 ## Prerequisites: 
 
