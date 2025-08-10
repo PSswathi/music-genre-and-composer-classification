@@ -312,9 +312,9 @@ To simplify knowing which commands you need to run and when you can follow these
 
 ### Clone the repository
 
-git clone https://github.com/yourusername/project-name.git
+git clone https://github.com/PSswathi/music-genre-and-composer-classification
 
-cd project-name
+cd Composer_Classificator
 
 ### Create virtual environment and install dependencies
 
