@@ -1,10 +1,6 @@
 # Base image with Python
 FROM python:3.12-slim
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
-        fluidsynth libsndfile1 \
-    && rm -rf /var/lib/apt/lists/*
-
 # Create working directory
 WORKDIR /app
 
