@@ -10,6 +10,11 @@
 
 aai-511-group6-final-project
 
+## Check out the deployed model [HERE](https://music-genre-and-composer-classification.onrender.com/):
+https://music-genre-and-composer-classification.onrender.com/
+
+We deployed the BiLSTM model as it had the best results, compared to all of the other models we created. 
+
 ![Visitors](https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2FPSswathi%2Fmusic-genre-and-composer-classification%2Fvs-badge&countColor=%23263759)
 
 ## Table of Contents
