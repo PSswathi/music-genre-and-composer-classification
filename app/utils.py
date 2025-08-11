@@ -4,11 +4,6 @@ import numpy as np
 import pretty_midi
 import joblib
 import json
-import base64
-import tempfile
-import os
-
-from midi2audio import FluidSynth
 
 VALID_COMPOSERS = ['Bach', 'Beethoven', 'Chopin', 'Mozart']
 
@@ -36,6 +31,9 @@ class AttentionLayer(Layer):
         output = inputs * a
         return tf.reduce_sum(output, axis=1)
     
+custom_objects = {
+    "AttentionLayer": AttentionLayer,
+}
 
 ACCENT_THRESHOLD = 80  # same as in training
 
@@ -82,15 +80,9 @@ def preprocess_midi_for_bilstm(
         tempo_bpm = 120.0
 
     # Gather non-drum notes and their programs
-    # notes = []
-    # programs = []
     for inst in midi.instruments:
         if inst.is_drum:
             continue
-        # prog = int(getattr(inst, "program", 0))
-        # for n in inst.notes:
-        #     notes.append(n)
-        #     programs.append(prog)
         instrument_program = inst.program
         notes = sorted(inst.notes, key=lambda n: n.start)
         if len(notes) < chunk_size:
@@ -149,40 +141,21 @@ def preprocess_midi_for_bilstm(
 
                 prev_start = start
                 prev_pitch = pitch
-
-    df = pd.DataFrame(features)
-    df['Program_FE'] = df['Program'].map(program_freq)
-    df['Program_FE'] = df['Program_FE'].fillna(0)
-
-    df[FEATURE_NAMES] = scaler.transform(df[FEATURE_NAMES])
-
-    X_chunks = []
-    features = df[FEATURE_NAMES].values
     
-    # Chunk features and assign label to each chunk
-    for i in range(0, len(features) - chunk_size + 1, chunk_size):
-        chunk = features[i:i + chunk_size]
-        X_chunks.append(chunk)
+    X_chunks = []
+    df = pd.DataFrame(features)
+
+    if len(features) != 0 or not df['Program'].empty:
+        df['Program_FE'] = df['Program'].map(program_freq)
+        df['Program_FE'] = df['Program_FE'].fillna(0)
+
+        df[FEATURE_NAMES] = scaler.transform(df[FEATURE_NAMES])
+
+        features = df[FEATURE_NAMES].values
+        
+        # Chunk features and assign label to each chunk
+        for i in range(0, len(features) - chunk_size + 1, chunk_size):
+            chunk = features[i:i + chunk_size]
+            X_chunks.append(chunk)
 
     return np.array(X_chunks, dtype=np.float32)
-
-custom_objects = {
-    "AttentionLayer": AttentionLayer,
-}
-
-def midi_to_wav_data_url(app, midi_bytes: bytes) -> str | None:
-    """Render MIDI bytes to WAV and return a data: URL. Uses a temp dir and cleans up."""
-    try:
-        with tempfile.TemporaryDirectory() as td:
-            mid_path = os.path.join(td, "in.mid")
-            wav_path = os.path.join(td, "out.wav")
-            with open(mid_path, "wb") as f:
-                f.write(midi_bytes)
-            FluidSynth(sound_font="./soundfont/GeneralUser-GS.sf2").midi_to_audio(mid_path, wav_path)
-            with open(wav_path, "rb") as f:
-                wav_bytes = f.read()
-        b64 = base64.b64encode(wav_bytes).decode("ascii")
-        return f"data:audio/wav;base64,{b64}"
-    except Exception as e:
-        app.logger.warning(f"Audio render failed: {e}")
-        return None
