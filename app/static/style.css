@@ -73,6 +73,39 @@ button[disabled] {
   opacity: 0.6;
   cursor: not-allowed;
 }
+button.is-loading {
+  position: relative;
+  pointer-events: none;
+  color: white; /* ensure text is readable */
+  background-size: 200% 200%;
+  animation: gradientShift 2s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+    background-color: #4a90e2; /* fallback if gradients not supported */
+    background-image: linear-gradient(270deg, #4a90e2, #50c9c3, #4a90e2);
+  }
+  50% {
+    background-position: 100% 50%;
+    background-image: linear-gradient(270deg, #50c9c3, #4a90e2, #50c9c3);
+  }
+  100% {
+    background-position: 0% 50%;
+    background-image: linear-gradient(270deg, #4a90e2, #50c9c3, #4a90e2);
+  }
+}
+
+button.is-loading .label {
+  font-weight: bold;
+}
+
+button .subtext {
+  font-size: 0.8em;
+  opacity: 0.8;
+  margin-left: 0.5rem;
+}
 .result {
   margin-top: 18px;
   display: grid;
@@ -135,16 +168,7 @@ td {
   margin: 8px 0 14px;
   font-size: 0.95rem;
 }
-#audioViz {
-  display: block;
-  width: 100%;
-  height: 140px;
-  margin-top: 10px;
-  border-radius: 12px;
-  background: #0b1220;
-  border: 1px solid #1f2937;
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03);
-}
+
 .samples {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -179,3 +203,37 @@ td {
   background: #2563eb;
   color: #e6f0ff;
 } /* play button */
+
+.viz-controls {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+.viz-btn {
+  padding: 0.35rem 0.65rem;
+  border: 1px solid var(--border, #2b2b2b);
+  background: var(--card, #1a1a1a);
+  border-radius: 0.5rem;
+}
+.viz-btn.active {
+  outline: 2px solid var(--accent, #4a90e2);
+}
+
+.viz-wrap {
+  width: 100%;
+  height: 180px;
+  border: 1px solid var(--border, #263248);
+  border-radius: 12px;
+  background: var(--card, #141b2a);
+  overflow: hidden;
+}
+
+#viz {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.player {
+  margin-top: 0.5rem;
+}

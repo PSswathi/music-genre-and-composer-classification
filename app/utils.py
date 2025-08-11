@@ -145,7 +145,7 @@ def preprocess_midi_for_bilstm(
     X_chunks = []
     df = pd.DataFrame(features)
 
-    if len(features) != 0 or not df['Program'].empty:
+    if len(features) != 0 and 'Program' in df.columns:
         df['Program_FE'] = df['Program'].map(program_freq)
         df['Program_FE'] = df['Program_FE'].fillna(0)
 
